@@ -8,7 +8,8 @@ const timer5 = document.getElementById('timer5');
 let posicion = 0;
 let tiempo;
 let activo = false; 
-let tiempos = [];
+let tiempos = ["00:00.000","00:00.000","00:00.000","00:00.000","00:00.000"];
+
 
 function startTimer() {
     let milisegundos = 0;
@@ -29,11 +30,11 @@ function detener() {
     }
     clearInterval(tiempo);
     activo = false;
-    timer1.textContent = tiempos[0];
-    timer2.textContent = tiempos[1];
-    timer3.textContent = tiempos[2];
-    timer4.textContent = tiempos[3];
-    timer5.textContent = tiempos[4];
+    timer1.textContent = "Primer tiempo: "+tiempos[0];
+    timer2.textContent = "Segundo tiempo: "+tiempos[1];
+    timer3.textContent = "Tercer tiempo: "+tiempos[2];
+    timer4.textContent = "Cuarto tiempo: "+tiempos[3];
+    timer5.textContent = "Quinto tiempo: "+tiempos[4];
 }
 
 function formatTime(milisegundos) {

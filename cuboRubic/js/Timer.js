@@ -1,47 +1,48 @@
-//Funciones referente al timer
-var startTime, currentTime, interval;
-var running = false;
+const startButton = document.getElementById('startButton');
+const stopButton = document.getElementById('stopButton');
+const timer = document.getElementById('timer');
 
-document.getElementById("startButton").addEventListener("click", startTimer);
-document.getElementById("stopButton").addEventListener("click", stopTimer);
+let tiempo;
+let activo = false; 
 
 function startTimer() {
-  if (!running) {
-    startTime = Date.now();
-    interval = setInterval(updateTimer, 1000);
-    running = true;
-    document.getElementById("startButton").disabled = true;
-    document.getElementById("stopButton").disabled = false;
-  }
+    let milisegundos = 0;
+
+    tiempo = setInterval(() => {
+        milisegundos += 10;
+        timer.textContent = formatTime(milisegundos);
+    }, 10); 
+
+    activo = true;
+    startButton.disabled = true;
+    stopButton.disabled = false;
 }
 
-function stopTimer() {
-  if (running) {
-    clearInterval(interval);
-    running = false;
-    document.getElementById("startButton").disabled = false;
-    document.getElementById("stopButton").disabled = true;
-  }
+function detener() {
+    clearInterval(tiempo);
+
+    activo = false;
+    startButton.disabled = false;
+    stopButton.disabled = true;
 }
 
-function updateTimer() {
-  currentTime = Date.now() - startTime;
-  var seconds = Math.floor(currentTime / 1000) % 60;
-  var minutes = Math.floor(currentTime / 1000 / 60) % 60;
-  var hours = Math.floor(currentTime / 1000 / 60 / 60);
-  document.getElementById("timer").textContent = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+function formatTime(milisegundos) {
+    const minutos = Math.floor((milisegundos % 3600000) / 60000).toString().padStart(2, '0');
+    const segundos = Math.floor((milisegundos % 60000) / 1000).toString().padStart(2, '0');
+    const ms = (milisegundos % 1000).toString().padStart(3, '0');
+
+    return `${minutos}:${segundos}.${ms}`;
 }
 
-function formatTime(time) {
-  return time < 10 ? "0" + time : time;
-}
-
-var button = document.getElementById("startButton");
-button.addEventListener("keydown", function(event) {
-  if (event.keyCode === 32) {
-    event.preventDefault(); 
-    button.click(); n
-  }
+document.addEventListener('keydown', (event) => {
+    if (event.keyCode === 32) {
+        if (activo) {
+            detener();
+        } else {
+            startTimer();
+        }
+    }
 });
 
-
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);

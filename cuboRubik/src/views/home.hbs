@@ -1,30 +1,110 @@
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-            <div class="card" id="loginCard">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/Styles.css">
+</head>
+
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="timer.html">Timer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="estadisticas.html">Estadisticas</a>
+                </li>
+            </ul>
+        </div>
+      
+        <div class="dropdown ml-auto">
+            <a class="nav-link dropdown-toggle custom-dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="ruta/imagen.jpg" class="rounded-circle" width="30" height="30">
+                Erik
+            </a>
+      
+            <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item text-light" href="perfil.html">Perfil</a>
+                <a class="dropdown-item text-light" href="conf.html">Ajustes</a>
+                <a class="dropdown-item text-light" href="sesion.html">Cerrar sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="card mt-2" id="sramCard">
+        <div class="text-center">
+            <h1>R' B L D' F2 B' D' U2 F' L2 F2 R2 F D2 F2 U2 B' R F'</h1>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <form action="scrambles" method="post" class="form-inline">
+                <div class="form-group mr-2">
+                    <label for="sesionLabel">Sesión</label>
+                    <select id="sesionOp" name="sesionOp" class="form-control" required>
+                        <option value="1">1</option>
+                        <option value="Crear">Nueva</option>
+                    </select>
+                </div>
+        
+                <div class="form-group ml-2">
+                    <label for="mezclaLaber">Mezcla</label>
+                    <select id="mezclaOp" name="mezclaOp" class="form-control" required>
+                        <option value="wca">WCA</option>
+                        <option value="cruzR">Cruz Resuelta</option>
+                        <option value="LL">LL</option>
+                        <option value="esquinas">Esquinas Resueltas</option>
+                        <option value="aristas">Aristas Resueltas</option>
+                    </select>
+                </div>
+            </form>
+        </div>    
+    </div>
+    
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div id="timer" class="text-center display-1">00.000</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
                 <div class="text-center">
-                    <h1>Iniciar sesión</h1>
-                </div>
-                <div class="card-body">
-                    <form action="login" method="post">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Contraseña</label>
-                            <input type="password" id="password" name="password" class="form-control" required>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="#" class="btn btn-link">¿Olvidaste tu contraseña?</a>
-                    <a href="registro.html" class="btn btn-link">Registrarse</a> <!-- Botón de registro -->
+                    <button class="btn btn-primary">+2</button> 
+                    <button class="btn btn-danger">DNF</button> 
+                    <button class="btn btn-secondary">Borrar</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="text-center">
+                    <h3>ao5: </h5>
+                    <h3>ao12: </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <h3>Timer</h3>
+    </footer>
+    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -17,6 +17,8 @@
     "express-handlebars": "^7.0.7",
     "express-myconnection": "^1.0.4",
     "express-session": "^1.17.3",
+    "jquery": "^3.7.0",
+    "jsdom": "^22.1.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.22"
   }

@@ -25,7 +25,7 @@ function iniciarSesion(req, res){
                             //console.log(element);
                             req.session.loggedin = true;
                             req.session.nombre = element.Nombre;
-                            req.session.id = element.idUsuario;
+                            req.session.idUsr = element.idUsuario;
                             req.session.btn = element.colorBoton;
                             req.session.txt = element.colorTexto;
                             req.session.fondo = element.colorFondo;
@@ -69,6 +69,8 @@ function alta(req,res){
             
                     req.getConnection((err,conn)=>{
                         conn.query('INSERT INTO usuario SET ?', [data], (err,rows)=>{
+                            req.session
+
                             res.redirect('/');
                         });
                     })
@@ -81,9 +83,23 @@ function alta(req,res){
     
 }
 
+
+function cerrarSesion(req,res){
+    if(req.session.loggedin == true){
+        req.session.destroy();
+        res.redirect('/login');
+    }
+    else{
+        res.redirect('/login');
+    }
+}
+
+
+
 module.exports = {
     login,
     iniciarSesion,
     registro,
     alta,
+    cerrarSesion
 };

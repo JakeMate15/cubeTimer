@@ -1,60 +1,59 @@
-    <div class="card mt-2" id="sramCard">
-        <div class="text-center">
-            <h1>R' B L D' F2 B' D' U2 F' L2 F2 R2 F D2 F2 U2 B' R F'</h1>
-        </div>
+<div class="card mt-2" id="sramCard">
+    <div class="text-center">
+        <h1>R' B L D' F2 B' D' U2 F' L2 F2 R2 F D2 F2 U2 B' R F'</h1>
+    </div>
 
-        <div class="row justify-content-center mt-4">
-            <form action="scrambles" method="post" class="form-inline">
-                <div class="form-group mr-2">
-                    <label for="sesionLabel">Sesión</label>
-                    <select id="sesionOp" name="sesionOp" class="form-control" required>
-                        <option value="1">1</option>
-                        <option value="Crear">Nueva</option>
-                    </select>
-                </div>
-        
-                <div class="form-group ml-2">
-                    <label for="mezclaLaber">Mezcla</label>
-                    <select id="mezclaOp" name="mezclaOp" class="form-control" required>
-                        <option value="wca">WCA</option>
-                        <option value="cruzR">Cruz Resuelta</option>
-                        <option value="LL">LL</option>
-                        <option value="esquinas">Esquinas Resueltas</option>
-                        <option value="aristas">Aristas Resueltas</option>
-                    </select>
-                </div>
-            </form>
-        </div>    
-    </div>
+    <div class="row justify-content-center mt-4">
+        <form action="scrambles" method="post" class="form-inline">
+            <div class="form-group mr-2">
+                <label for="sesionLabel">Sesión</label>
+                <select id="sesionOp" name="sesionOp" class="form-control" required>
+                    <option value="1">1</option>
+                    <option value="Crear">Nueva</option>
+                </select>
+            </div>
     
-    <div class="container-fluid mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div id="timer" class="text-center display-1">00.000</div>
+            <div class="form-group ml-2">
+                <label for="mezclaLaber">Mezcla</label>
+                <select id="mezclaOp" name="mezclaOp" class="form-control" required>
+                    <option value="wca">WCA</option>
+                    <option value="cruzR">Cruz Resuelta</option>
+                    <option value="LL">LL</option>
+                    <option value="esquinas">Esquinas Resueltas</option>
+                    <option value="aristas">Aristas Resueltas</option>
+                </select>
+            </div>
+        </form>
+    </div>    
+</div>
+
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div id="timer" class="text-center display-1">00.000</div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="text-center">
+                <button class="btn btn-primary">+2</button> 
+                <button class="btn btn-danger">DNF</button> 
+                <button class="btn btn-secondary">Borrar</button>
             </div>
         </div>
     </div>
-    
-    <div class="container-fluid mt-4">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="text-center">
-                    <button class="btn btn-primary">+2</button> 
-                    <button class="btn btn-danger">DNF</button> 
-                    <button class="btn btn-secondary">Borrar</button>
-                </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="text-center">
+                <h3>ao5: </h5>
+                <h3>ao12: </h5>
             </div>
         </div>
     </div>
-    
-    <div class="container-fluid mt-4">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="text-center">
-                    <h3>ao5: </h5>
-                    <h3>ao12: </h5>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+</div>

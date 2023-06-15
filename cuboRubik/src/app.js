@@ -4,23 +4,19 @@ const myconnection = require('express-myconnection');
 const mysql = require('mysql');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const jsdom = require('jsdom')
+const path = require('path');
 
 const loginRoutes = require('./routes/login');
 const timerRoutes = require('./routes/timer');
 
 const app = express();
-app.set('port', 4000);
 
-app.set('views', __dirname + '/views');
-app.engine('.hbs', engine({
-    extname: '.hbs',
-}));
+app.set('port', 4000);
+app.set('views', path.join(__dirname, 'views'));
+app.engine('.hbs', engine({ extname: '.hbs' }));
 app.set('view engine', 'hbs');
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(myconnection(mysql, {
@@ -37,18 +33,21 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use('/src/js/', express.static(path.join(__dirname, 'js'), { 'Content-Type': 'text/javascript' }));
+app.use('/src/styles', express.static(path.join(__dirname, 'styles')));
+app.use(express.static(path.join(__dirname, 'img')));
+
 app.listen(app.get('port'), () => {
-    console.log('Puerto: ', app.get('port'));
+    console.log('Puerto:', app.get('port'));
 });
 
 app.use('/', loginRoutes);
-app.use('/',timerRoutes);
+app.use('/', timerRoutes);
 
 app.get('/', (req, res) => {
-    if (req.session.loggedin === true){
+    if (req.session.loggedin === true) {
         res.redirect('timer');
-    }
-    else{
+    } else {
         res.redirect('/login');
     }
 });

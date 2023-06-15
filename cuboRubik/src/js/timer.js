@@ -116,3 +116,30 @@ $(document).ready(function() {
         timerHtml.textContent = "Borrado";
     });
 });
+
+function handleSesionOptionChange() {
+    var selectElement = document.getElementById("sesionOp");
+    var selectedValue = selectElement.value;
+
+    if (selectedValue === "Crear") {
+        // Mostrar ventana emergente para crear una nueva sesión
+        var newSesion = prompt("Ingrese el nombre de la nueva sesión:");
+
+        if (newSesion) {
+            // Enviar solicitud al servidor para guardar la nueva sesión en la base de datos
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/crearSesion", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // La nueva sesión se ha creado correctamente
+                    // Actualizar la página o realizar cualquier otra acción necesaria
+                }
+            };
+
+            var data = JSON.stringify({ sesion: newSesion });
+            xhr.send(data);
+        }
+    }
+}

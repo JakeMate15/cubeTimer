@@ -7,5 +7,6 @@ router.get('/timer', timerController.timer)
 router.get('/estadisticas', timerController.estadisticas);
 router.get('/perfil',timerController.perfil);
 router.get('/conf',timerController.ajustes);
+router.post('/crearSesion',timerController.crearSesion);
 
 module.exports = router;

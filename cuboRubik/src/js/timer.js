@@ -7,11 +7,13 @@ function toggleTimer() {
     if (corriendo) {
         corriendo = false;
         clearTimeout(idTiempo);
+        $("#sesionOp, #mezclaOp").change(); 
     } else {
         corriendo = true;
         tiempoInicio = Date.now();
         actualizaTiempo();
     }
+   
 }
 
 function actualizaTiempo() {
@@ -49,10 +51,39 @@ function padZero(num, width) {
     return numString;
 }
 
-document.addEventListener('keydown', function(event) {
+$(document).ready(function() {
+    $("#sesionOp, #mezclaOp").change(function() {
+        var sesion = $("#sesionOp").val();
+        var tipoMezc = $("#mezclaOp").val();
+        var mezcla = "";
 
-    if (event.code === 'Space') {
-        event.preventDefault();
-        toggleTimer();
-    }
+        switch (tipoMezc) {
+            case "wca":
+                mezcla = scramble_333.genWca();
+                break;
+            case "cruzR":
+                mezcla = scramble_333.genF2L();
+                break;
+            case "LL":
+                mezcla = scramble_333.genLL();
+                break;
+            case "esquinas":
+                mezcla = scramble_333.genAristas();
+                break;
+            case "aristas":
+                mezcla = scramble_333.genEsq();
+                break;
+        }
+
+        $("#scrTimer").text(mezcla);
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.code === 'Space') {
+            event.preventDefault();
+            toggleTimer();
+            
+        }
+    });
+
 });

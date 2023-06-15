@@ -7,13 +7,11 @@ function toggleTimer() {
     if (corriendo) {
         corriendo = false;
         clearTimeout(idTiempo);
-        $("#sesionOp, #mezclaOp").change(); 
     } else {
         corriendo = true;
         tiempoInicio = Date.now();
         actualizaTiempo();
     }
-   
 }
 
 function actualizaTiempo() {
@@ -28,7 +26,7 @@ function actualizaTiempo() {
 }
 
 function formatTime(time) {
-    var milliseconds = Math.floor(time % 1000 / 100); 
+    var milliseconds = Math.floor(time % 1000 / 100);
     var seconds = Math.floor(time / 1000) % 60;
     var minutes = Math.floor(time / 1000 / 60);
 
@@ -50,6 +48,21 @@ function padZero(num, width) {
     }
     return numString;
 }
+
+function convertirAMilisegundos(tiempo) {
+    var partes = tiempo.split(':');
+    var segundos = 0;
+
+    if(partes.length == 1){
+        segundos = parseFloat(partes[0]);
+    }
+    else{
+        segundos = parseInt(partes[0]) * 60 + parseFloat(partes[1]);
+    }
+
+    return segundos * 1000;
+}
+  
 
 $(document).ready(function() {
     $("#sesionOp, #mezclaOp").change(function() {
@@ -82,8 +95,24 @@ $(document).ready(function() {
         if (event.code === 'Space') {
             event.preventDefault();
             toggleTimer();
-            
         }
     });
 
+    $("#mas2").click(function() {
+        var tiempo = timerHtml.textContent;
+
+        if(tiempo != 'DNF' && tiempo != 'Borrado'){
+            var tiempoEnMilisegundos = convertirAMilisegundos(tiempo);
+            tiempoEnMilisegundos+=2000;
+            timerHtml.textContent = formatTime(tiempoEnMilisegundos);
+        }
+    });
+
+    $("#dnf").click(function() {
+        timerHtml.textContent = "DNF";
+    });
+
+    $("#borrar").click(function() {
+        timerHtml.textContent = "Borrado";
+    });
 });
